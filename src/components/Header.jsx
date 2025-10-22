@@ -28,7 +28,7 @@ function Header() {
 
   const header = "flex flex-col items-center justify-center h-screen bg-[linear-gradient(to_bottom,_#E9006E_80%,_#D3C912_80%)]";
   const headerH1 = "text-4xl md:text-6xl font-bold text-white";
-  const headerP = "text-base md:text-xl text-whit mt-4 text-center break-words max-w-3xl mx-auto";
+  const headerP = "text-base md:text-xl text-white mt-4 text-center break-words max-w-3xl mx-auto";
 
   const navItems = [
     { text: "Sobre", href: "#sobre" },
@@ -55,7 +55,7 @@ function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={handleNavClick}
-                className="hover:text-blue-400 transition-colors"
+                className="hover:text-[#D3C912] transition-colors"
               >
                 {item.text}
               </a>
@@ -70,13 +70,13 @@ function Header() {
 
         {/* Menu mobile dropdown */}
         {menuOpen && (
-          <div className="md:hidden bg-gray-800 flex flex-col items-center space-y-4 py-4">
+          <div className="md:hidden bg-[#E9006E] flex flex-col items-center space-y-4 py-4">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={handleNavClick}
-                className="hover:text-blue-400 text-lg transition-colors"
+                className="hover:text-[#D3C912] text-lg transition-colors"
               >
                 {item.text}
               </a>
