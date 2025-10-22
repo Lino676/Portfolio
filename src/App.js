@@ -5,13 +5,13 @@ function App() {
   const sobre = `
   py-16
   px-4
-  bg-white
+  bg-[#21221C]
   `;
   const sobreH2 = `
   text-3xl
   md:text-4xl
   font-bold
-  text-blue-900
+  text-white
   mb-4
   text-center
   `
@@ -19,7 +19,7 @@ function App() {
   text-base
   sm:text-sm
   md:text-lg
-  text-blue-700
+  text-white
   text-center
   max-w-3xl
   mx-auto
@@ -28,13 +28,13 @@ function App() {
   const servicos = `
   py-16
   px-4
-  bg-gray-50
+  bg-[#21221C]
   `;
   const servicosH2 = `
   text-3xl
   md:text-4xl
   font-bold
-  text-blue-900
+  text-white
   mb-8
   text-center
   `;
@@ -44,20 +44,20 @@ function App() {
   pl-5
   max-w-xl
   mx-auto
-  text-blue-700
+  text-white
   space-y-2
   break-words
   `;
   const portfolio = `
   py-16
   px-4
-  bg-white
+  bg-[#21221C]
   `;
   const portfolioH2 = `
   text-3xl 
   md:text-4xl
   font-bold
-  text-blue-900
+  text-white
   mb-8
   text-center
   `;
@@ -71,7 +71,7 @@ function App() {
   mx-auto
   `;
   const portfolioImg = `
-  bg-blue-200 
+  bg-[#E9006E]
   h-48
   flex
   items-center
@@ -80,7 +80,7 @@ function App() {
   rounded
   `;
   const footer = `
-  bg-blue-900
+  bg-[#D3C912]
   text-white
   py-8
   px-4
@@ -103,7 +103,7 @@ function App() {
   gap-14
   `;
   const redesSocias = `
-  hover:text-blue-400
+  hover:text-[#E9006E]
   `;
   return (
     <div>

@@ -26,9 +26,9 @@ function Header() {
     setMenuOpen(false);
   };
 
-  const header = "flex flex-col items-center justify-center min-h-screen bg-blue-100";
-  const headerH1 = "text-4xl md:text-6xl font-bold text-blue-900";
-  const headerP = "text-base md:text-xl text-blue-700 mt-4 text-center break-words max-w-3xl mx-auto";
+  const header = "flex flex-col items-center justify-center h-screen bg-[linear-gradient(to_bottom,_#E9006E_80%,_#D3C912_80%)]";
+  const headerH1 = "text-4xl md:text-6xl font-bold text-white";
+  const headerP = "text-base md:text-xl text-whit mt-4 text-center break-words max-w-3xl mx-auto";
 
   const navItems = [
     { text: "Sobre", href: "#sobre" },
@@ -41,12 +41,12 @@ function Header() {
     <header className={header}>
       {/* Menu fixo */}
       <div
-        className={`fixed top-0 left-0 w-full bg-gray-900 text-white shadow-md z-50 transition-transform duration-300 ${
+        className={`fixed top-0 left-0 w-full bg-[#E9006E] text-white shadow-md z-50 transition-transform duration-300 ${
           showNav ? "translate-y-0" : "-translate-y-full"
         }`}
       >
         <div className="max-w-6xl mx-auto flex justify-between items-center p-4">
-          <h1 className="text-2xl font-bold">Maysa Lima</h1>
+          <h1 className="text-2xl font-bold">Maysa <span className="text-[#D3C912]">Lima</span></h1>
 
           {/* Menu desktop */}
           <nav className="hidden md:flex space-x-6">
