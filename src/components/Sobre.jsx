@@ -11,7 +11,7 @@ function Sobre() {
             </div>
             <p className= {sobreP}>Descrição sobre ela aqui. bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</p>
             <p className={sobreP}>Área de atuação, tipos de fotografia ou serviços</p>
-            <p className={sobreP}>Diferencias: bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</p>
+            <p className={sobreP}>Diferenciais: bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</p>
         </section>
     )
 }

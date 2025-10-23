@@ -26,11 +26,8 @@ function Header() {
     setMenuOpen(false);
   };
 
-  const header = "flex flex-col items-center justify-center h-screen bg-[linear-gradient(to_bottom,_#E9006E_80%,_#D3C912_80%)]";
-  const headerH1 = "text-4xl md:text-6xl font-bold text-white";
-  const headerP = "text-base md:text-xl text-white mt-4 text-center break-words max-w-3xl mx-auto";
-
   const navItems = [
+    { text: "Home", href: "#home" },
     { text: "Sobre", href: "#sobre" },
     { text: "Serviços", href: "#servicos" },
     { text: "Portfólio", href: "#portfolio" },
@@ -38,10 +35,8 @@ function Header() {
   ];
 
   return (
-    <header className={header}>
-      {/* Menu fixo */}
-      <div
-        className={`fixed top-0 left-0 w-full bg-[#E9006E] text-white shadow-md z-50 transition-transform duration-300 ${
+    <div
+    className={`fixed top-0 left-0 w-full bg-[#E9006E] text-white shadow-md z-50 transition-transform duration-300 ${
           showNav ? "translate-y-0" : "-translate-y-full"
         }`}
       >
@@ -84,14 +79,6 @@ function Header() {
           </div>
         )}
       </div>
-
-      {/* Conteúdo central do Header */}
-      <div className="mt-24 text-center">
-        <h1 className={headerH1}>Maysa</h1>
-        <p className={headerP}>aaaaaaaa</p>
-      </div>
-    </header>
   );
 }
-
 export default Header;
