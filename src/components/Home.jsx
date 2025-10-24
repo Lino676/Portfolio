@@ -3,7 +3,7 @@ import { useState } from "react";
 
 function Home() {
 
-    const home = "flex flex-col items-center justify-center min-h-screen bg-[linear-gradient(to_bottom,_#E9006E_80%,_#D3C912_80%)]";
+    const home = "flex flex-col items-center justify-center min-h-screen pb-32 md:pb-48  bg-[linear-gradient(to_bottom,_#E9006E_80%,_#D3C912_80%)]";
     const homeH1 = "text-5xl md:text-6xl font-bold text-white mb-6";
     const homeH2 = "text-2xl md:text-3xl font-medium text-white mb-4"
     const homeP = "text-lg md:text-xl text-white mt-4 text-center break-words max-w-xl mx-auto mb-8";

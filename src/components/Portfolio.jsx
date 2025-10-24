@@ -1,4 +1,6 @@
 import { ExpandIcon } from "lucide-react"
+import { motion } from "framer-motion";
+import { container, item } from "../animations/animationVariants";
 
 function Portfolio() {
     const portfolio = "py-16 px-4 bg-[#21221C]";
@@ -7,29 +9,33 @@ function Portfolio() {
     const portfolioImg = "bg-[#E9006E] h-48 flex items-center justify-center shadow-lg rounded";
 
     return (
-        <section id="portfolio" className= {portfolio}>
-           <h2 className= {portfolioH2}>Portfólio</h2>
-            <div className= {portfolioDiv}>
-               <div className= {portfolioImg}>
+        <motion.section id="portfolio" className= {portfolio} 
+        variants= {container}
+        initial= "hidden"
+        whileInView= "visible"
+        viewport= {{once: true}}>
+           <motion.h2 className= {portfolioH2} variants= {item}>Portfólio</motion.h2>
+            <motion.div className= {portfolioDiv} variants= {item}>
+               <motion.div className= {portfolioImg} variants= {item}>
                 <p>Foto 1</p>
-               </div>
-               <div className= {portfolioImg}>
+               </motion.div>
+               <motion.div className= {portfolioImg} variants= {item}>
                 <p>Foto 2</p>
-               </div>
-               <div className= {portfolioImg}>
+               </motion.div>
+               <motion.div className= {portfolioImg} variants= {item}>
                 <p>Foto 3</p>
-               </div>
-               <div className= {portfolioImg}>
+               </motion.div>
+               <motion.div className= {portfolioImg} variants= {item}>
                 <p>Foto 4</p>
-               </div>
-               <div className= {portfolioImg}>
+               </motion.div>
+               <motion.div className= {portfolioImg} variants= {item}>
                 <p>Foto 5</p>
-               </div>
-               <div className= {portfolioImg}>
+               </motion.div>
+               <motion.div className= {portfolioImg} variants= {item}>
                 <p>Foto 6</p>
-               </div>
-             </div>
-        </section>
+               </motion.div>
+             </motion.div>
+        </motion.section>
     )
 }
 export default Portfolio;
