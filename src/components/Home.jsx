@@ -4,9 +4,9 @@ import { useState } from "react";
 function Home() {
 
     const home = "flex flex-col items-center justify-center min-h-screen pb-32 md:pb-48  bg-[linear-gradient(to_bottom,_#E9006E_80%,_#D3C912_80%)]";
-    const homeH1 = "text-5xl md:text-6xl font-bold text-white mb-6";
-    const homeH2 = "text-2xl md:text-3xl font-medium text-white mb-4"
-    const homeP = "text-lg md:text-xl text-white mt-4 text-center break-words max-w-xl mx-auto mb-8";
+    const homeH1 = "text-6xl md:text-7xl font-bold text-white mb-6";
+    const homeH2 = "text-3xl md:text-4xl font-medium text-white mb-4"
+    const homeP = "text-lg md:text-xl text-white mt-4 text-center break-words max-w-xl mx-auto mb-7";
     const botao = "bg-white text-[#E9006E] px-6 py-3 rounded-full font-semibold hover:bg-[#E9006E] hover:text-white transition duration-300"
     const container = {
         hidden: {opacity: 0},
