@@ -14,11 +14,11 @@ function Servicos() {
         viewport= {{once: true}}>
             <motion.h2 className= {servicosH2} variants= {item}>Serviços</motion.h2>
             <motion.ul className= {lista} variants= {item}>
-                <li>cccccccccccccccccccccccccccccccccccccccccc</li>
-                <li>ddddddddddddddddddddddddddddddddddd</li>
-                <li>eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</li>
-                <li>fffffffffffffffffffffffffffffffffffff</li>
-                <li>gggggggggggggggggggggggggggggggg</li>
+                <motion.li>cccccccccccccccccccccccccccccccccccccccccc</motion.li>
+                <motion.li>ddddddddddddddddddddddddddddddddddd</motion.li>
+                <motion.li>eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</motion.li>
+                <motion.li>fffffffffffffffffffffffffffffffffffff</motion.li>
+                <motion.li>gggggggggggggggggggggggggggggggg</motion.li>
             </motion.ul>
         </motion.section>
     )

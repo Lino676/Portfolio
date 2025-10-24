@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { container, item } from "../animations/animationVariants";
 
 function Sobre() {
