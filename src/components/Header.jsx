@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { motion } from "framer-motion";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -38,18 +39,20 @@ function Header() {
     <div
     className={`fixed top-0 left-0 w-full bg-[#E9006E] text-white shadow-md z-50 transition-transform duration-300 ${
           showNav ? "translate-y-0" : "-translate-y-full"
-        }`}
-      >
-        <div className="max-w-6xl mx-auto flex justify-between items-center p-4">
+        }`}>
+        <motion.div className="max-w-6xl mx-auto flex justify-between items-center p-4"
+        initial = {{opacity: 0, y:-30}}
+        animate = {{opacity: 1, y:0}}
+        transition={{duration: 0.8, ease: "easeInOut"}}>
           <h1 className="text-2xl font-bold">Maysa <span className="text-[#D3C912]">Lima</span></h1>
 
           {/* Menu desktop */}
           <nav className="hidden md:flex space-x-6">
             {navItems.map((item) => (
               <a
-                key={item.href}
-                href={item.href}
-                onClick={handleNavClick}
+              key={item.href}
+              href={item.href}
+              onClick={handleNavClick}
                 className="hover:text-[#D3C912] transition-colors"
               >
                 {item.text}
@@ -61,11 +64,15 @@ function Header() {
           <button className="md:hidden p-2" onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
-        </div>
+        </motion.div>
 
         {/* Menu mobile dropdown */}
         {menuOpen && (
-          <div className="md:hidden bg-[#E9006E] flex flex-col items-center space-y-4 py-4">
+          <motion.div className="md:hidden bg-[#E9006E] flex flex-col items-center space-y-4 py-4"
+          initial = {{opacity: 0, y:-10}}
+          animate = {{opacity: 1, y:0}}
+          transition={{duration: 0.7}}
+          >
             {navItems.map((item) => (
               <a
                 key={item.href}
@@ -76,7 +83,7 @@ function Header() {
                 {item.text}
               </a>
             ))}
-          </div>
+          </motion.div>
         )}
       </div>
   );
