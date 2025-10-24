@@ -12,7 +12,7 @@ function Sobre() {
         variants={container}
         initial= "hidden"
         whileInView="visible"
-        viewport={{once: true}}>
+        viewport={{once: true, amount: 0.3}}>
             <motion.h2 className= {sobreH2} variants={item}>Sobre</motion.h2>
             <motion.div className="mt-8 flex justify-center" variants={item}>
                 <div className="bg-[#E9006E] w-60 h-60 rounded-full flex items-center justify-center mb-8 border-4 border-white" variants={item}></div>
