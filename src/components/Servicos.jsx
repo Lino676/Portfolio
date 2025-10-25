@@ -36,7 +36,7 @@ function Servicos() {
             transition={{ duration: 0, ease: "easeOut" }}
           >
             <div>
-              <h3 className="text-xl font-semibold mb-2">{s.titulo}</h3>
+              <h3 className="text-2xl font-semibold mb-2">{s.titulo}</h3>
               <p className="text-sm opacity-90 mb-4">{s.descricao}</p>
             </div>
             <div className="flex items-center justify-between">

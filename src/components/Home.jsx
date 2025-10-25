@@ -50,7 +50,7 @@ function Home() {
                 transition = {{duration: 1, ease: "easeInOut"}} 
                 whileHover={{scale: 1.1}}>
                     <motion.div 
-                    className={`w-60 h-60 rounded-full flex items-center justify-center border-4 border-white mb-8 cursor-pointer ${placeholders[placeholderAtual]}`}
+                    className={`w-60 h-60 rounded-full flex items-center justify-center border-4 border-white mb-8 cursor-pointer ${placeholders[placeholderAtual]} shadow-lg drop-shadow-[0_0_20px_#FFFF]`}
                     animate = {{rotateY: angulo}}
                     transition={{duration: 0.5, ease: "easeInOut"}}
                     style= {{transformStyle: "preserve-3d"}}>

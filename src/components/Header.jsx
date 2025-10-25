@@ -37,7 +37,7 @@ function Header() {
 
   return (
     <div
-    className={`fixed top-0 left-0 w-full bg-[#E9006E] text-white shadow-md z-50 transition-transform duration-300 ${
+    className={`fixed top-0 left-0 w-full bg-[#E9006E]/70 backdrop-blur-sm text-white shadow-md z-50 transition-transform duration-300 ${
           showNav ? "translate-y-0" : "-translate-y-full"
         }`}>
         <motion.div className="max-w-6xl mx-auto flex justify-between items-center p-4"
