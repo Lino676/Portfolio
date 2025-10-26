@@ -4,7 +4,7 @@ import PortfolioCard from "./PortfolioCard";
 import { useState } from "react";
 
 function Portfolio() {
-    const portfolio = "py-16 px-4 bg-[#21221C]";
+    const portfolio = "py-16 px-4 bg-gradient-to-b from-[#0A1F44] to-[#D3C912]";
     const portfolioH2 = "text-3xl md:text-4xl font-bold text-white mb-8 text-center";
     const portfolioDiv = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto";
     const itens = [
@@ -53,7 +53,7 @@ function Portfolio() {
                  transition= {{duration: 0.5}}
                  >
                     <motion.div 
-                    className="bg-[#E9006E] p-8 rounded shadow-lg relative max-w-md w-full"
+                    className="bg-[#E9006E] p-8 rounded-lg shadow-lg relative max-w-md w-full"
                     onClick= {(e) => e.stopPropagation()}
                     initial= {{opacity: 0, scale: 0.8}}
                     animate= {{opacity: 1, scale: 1}}

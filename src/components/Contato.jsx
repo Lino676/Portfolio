@@ -1,10 +1,10 @@
 import { faFacebook, faInstagram, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
-import { container, item } from "../animations/animationVariants";
+import { container } from "../animations/animationVariants";
 
 function Contato() {
-    const footer = "bg-[#D3C912] text-white py-8 px-4";
+    const footer = "bg-gradient-to-b from-[#D3C912] to-[#E9006E] text-white py-8 px-4";
     const footerDiv = "max-w-6xl mx-auto text-center space-y-6";
     const contato = "grid items-center justify-center";
     const divRedesSociais = " flex flex-wrap justify-center gap-12";

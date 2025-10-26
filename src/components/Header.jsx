@@ -37,7 +37,7 @@ function Header() {
 
   return (
     <div
-    className={`fixed top-0 left-0 w-full bg-[#E9006E]/70 backdrop-blur-sm text-white shadow-md z-50 transition-transform duration-300 ${
+    className={`fixed top-0 left-0 w-full bg-transparent backdrop-blur-sm text-white shadow-md z-50 transition-transform duration-300 ${
           showNav ? "translate-y-0" : "-translate-y-full"
         }`}>
         <motion.div className="max-w-6xl mx-auto flex justify-between items-center p-4"
@@ -68,7 +68,7 @@ function Header() {
 
         {/* Menu mobile dropdown */}
         {menuOpen && (
-          <motion.div className="md:hidden bg-[#E9006E] flex flex-col items-center space-y-4 py-4"
+          <motion.div className="md:hidden bg-transparent backdrop-blur-sm flex flex-col items-center space-y-4 py-4"
           initial = {{opacity: 0, y:-10}}
           animate = {{opacity: 1, y:0}}
           transition={{duration: 0.7}}
@@ -78,7 +78,7 @@ function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={handleNavClick}
-                className="hover:text-[#D3C912] text-lg transition-colors"
+                className="hover:text-[#D3C912] text-xl transition-colors"
               >
                 {item.text}
               </a>

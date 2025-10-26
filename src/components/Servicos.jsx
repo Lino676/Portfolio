@@ -11,7 +11,7 @@ function Servicos() {
   return (
     <motion.section 
       id="servicos" 
-      className="py-16 px-4 bg-[#21221C]"
+      className="py-16 px-4 bg-[#0A1F44]"
       variants={container}
       initial="hidden"
       whileInView="visible"
@@ -31,8 +31,8 @@ function Servicos() {
         {servicos.map((s, i) => (
           <motion.div 
             key={i}
-            className="bg-[#E9006E] rounded-lg p-6 text-white shadow-lg transition-transform duration-500 flex flex-col justify-between"
-            whileHover={{scale: 1.05, filter: "brightness(1.1)"}}
+            className="bg-[#0A1F44] rounded-lg p-6 text-white shadow-lg transition-transform duration-500 flex flex-col justify-between border-2 border-white"
+            whileHover={{scale: 1.05, filter: "brightness(1.2)"}}
             transition={{ duration: 0, ease: "easeOut" }}
           >
             <div>
@@ -41,7 +41,7 @@ function Servicos() {
             </div>
             <div className="flex items-center justify-between">
               <span className="font-bold text-lg">{s.preco}</span>
-              <button className="bg-white text-[#E9006E] px-3 py-1 rounded font-semibold hover:bg-opacity-80 transition"
+              <button className="bg-white text-[#0A1F44] px-3 py-1 rounded font-semibold hover:bg-opacity-80 transition"
               onClick={() => document.getElementById('contato').scrollIntoView({behavior: 'smooth'})}>
                 Contato
               </button>
