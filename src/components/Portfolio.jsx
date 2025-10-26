@@ -4,7 +4,7 @@ import PortfolioCard from "./PortfolioCard";
 import { useState } from "react";
 
 function Portfolio() {
-    const portfolio = "py-16 px-4 bg-gradient-to-b from-[#0A1F44] to-[#D3C912]";
+    const portfolio = "py-16 px-4 bg-gradient-to-b from-[#21221C] to-[#D3C912]";
     const portfolioH2 = "text-3xl md:text-4xl font-bold text-white mb-8 text-center";
     const portfolioDiv = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto";
     const itens = [

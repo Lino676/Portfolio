@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
+import { motion, scale } from "framer-motion";
 import { useState } from "react";
+import bannerMaysa from "../imagens/banner.jpeg";
 
 function Home() {
 
@@ -50,12 +51,14 @@ function Home() {
                 transition = {{duration: 1, ease: "easeInOut"}} 
                 whileHover={{scale: 1.1}}>
                     <motion.div 
-                    className={`w-60 h-60 rounded-full flex items-center justify-center border-4 border-white mb-8 cursor-pointer ${placeholders[placeholderAtual]} shadow-lg drop-shadow-[0_0_20px_#FFFF]`}
+                    className={`w-60 h-60 rounded-full flex items-center justify-center border-4 border-white mb-8 cursor-pointer shadow-lg drop-shadow-[0_0_20px_#FFFF] overflow-hidden`}
                     animate = {{rotateY: angulo}}
                     transition={{duration: 0.5, ease: "easeInOut"}}
                     style= {{transformStyle: "preserve-3d"}}>
+                        <img src={bannerMaysa} alt= "Banner Maysa" className="w-full h-full object-cover" style={{backfaceVisibility: "hidden", transform: `rotateY(${placeholderAtual *180}deg)`}}/>
                     </motion.div>
                 </motion.div>
+                <motion.p className={homeP} variants={item}><motion.a href="https://www.instagram.com/bymaysalima/" target="_blank" rel="noopener noreferrer" className="ml-2 underline decoration-1 hover:shadow-lg hover:border-2 drop-shadow-[0_0_20px_#FFFF] rounded-lg p-1">BYMAYSALIMA</motion.a></motion.p>
                 <motion.h2 className={homeH2} variants={item}>Estudante de Publicidade e Propaganda</motion.h2>
                 <motion.p className={homeP} variants={item}>Capturando momentos e criando memórias únicas!</motion.p>
                 <motion.a href="#sobre" className={botao} variants={item}>

@@ -3,7 +3,7 @@ import { container, item } from "../animations/animationVariants";
 
 function Sobre() {
 
-    const sobre = "py-16 px-4 bg-gradient-to-b from-[#D3C912] to-[#0A1F44]";
+    const sobre = "py-16 px-4 bg-gradient-to-b from-[#D3C912] to-[#21221C]";
     const sobreH2 = "text-4xl md:text-5xl font-bold text-white mb-4 text-center";
     const sobreP = "text-base sm:text-sm md:text-lg text-white text-center max-w-3xl mx-auto break-words";
     return (
