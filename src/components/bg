@@ -1,6 +1,109 @@
-bg-[linear-gradient(to_bottom,_#E9006E_80%,_#D3C912_80%)]
+// bg-[linear-gradient(to_bottom,_#E9006E_80%,_#D3C912_80%)]
 
-background do home 
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
+import { motion } from "framer-motion";
 
-#21221C
-#0A1F44
+function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [showNav, setShowNav] = useState(true);
+  const [isDarkSection, setIsDarkSection] = useState(false);
+
+  useEffect(() => {
+    let lastScroll = 0;
+
+    const handleScroll = () => {
+      const currentScroll = window.scrollY;
+      if (currentScroll > lastScroll) {
+        setShowNav(false); // rolando pra baixo → esconde menu
+      } else {
+        setShowNav(true); // rolando pra cima → mostra menu
+      }
+      lastScroll = currentScroll;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const isLight = entry.target.getAttribute("data-bg") === "light";
+            setIsDarkSection(isLight);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+    sections.forEach((section) => observer.observe(section));
+
+    return () => window.removeEventListener("scroll", handleScroll);
+    sections.forEach((section) => observer.unobserve(section));
+  }, []);
+
+  const handleNavClick = () => {
+    setMenuOpen(false);
+  };
+
+  const navItems = [
+    { text: "Home", href: "#home" },
+    { text: "Sobre", href: "#sobre" },
+    { text: "Serviços", href: "#servicos" },
+    { text: "Portfólio", href: "#portfolio" },
+    { text: "Contato", href: "#contato" },
+  ];
+
+  return (
+    <div
+    className={`fixed top-0 left-0 w-full bg-transparent backdrop-blur-sm text-black shadow-md z-50 transition-transform duration-300 ${
+      showNav ? "translate-y-0" : "-translate-y-full"} ${isDarkSection ? "text-black" : "text-white"}`}>
+        <motion.div className="max-w-6xl mx-auto flex justify-between items-center p-4"
+        initial = {{opacity: 0, y:-30}}
+        animate = {{opacity: 1, y:0}}
+        transition={{duration: 0.8, ease: "easeInOut"}}>
+          <h1 className="text-2xl font-bold">Maysa <span className="text-[#D3C912]">Lima</span></h1>
+
+          {/* Menu desktop */}
+          <nav className="hidden md:flex space-x-6">
+            {navItems.map((item) => (
+              <a
+              key={item.href}
+              href={item.href}
+              onClick={handleNavClick}
+              className="hover:text-[#D3C912] transition-colors"
+              >
+                {item.text}
+              </a>
+            ))}
+          </nav>
+
+          {/* Ícone menu mobile */}
+          <button className="md:hidden p-2" onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </motion.div>
+
+        {/* Menu mobile dropdown */}
+        {menuOpen && (
+          <motion.div className="md:hidden bg-transparent backdrop-blur-sm flex flex-col items-center space-y-4 py-4"
+          initial = {{opacity: 0, y:-10}}
+          animate = {{opacity: 1, y:0}}
+          transition={{duration: 0.7}}
+          >
+            {navItems.map((item) => (
+              <a
+              key={item.href}
+              href={item.href}
+              onClick={handleNavClick}
+                className="hover:text-[#D3C912] text-xl transition-colors"
+              >
+                {item.text}
+              </a>
+            ))}
+          </motion.div>
+        )}
+      </div>
+  );
+}
+export default Header;

@@ -3,22 +3,22 @@ import { container, item } from "../animations/animationVariants";
 
 function Sobre() {
 
-    const sobre = "py-16 px-4 bg-gradient-to-b from-[#D3C912] to-[#21221C]";
-    const sobreH2 = "text-4xl md:text-5xl font-bold text-white mb-4 text-center";
-    const sobreP = "text-base sm:text-sm md:text-lg text-white text-center max-w-3xl mx-auto break-words";
+    const sobre = "py-16 px-4 bg-gradient-to-b from-[#bfbfbf] to-[#ffffff]";
+    const sobreH2 = "text-4xl md:text-5xl font-bold text-black mb-4 text-center";
+    const sobreP = "text-xl mb-6 sm:text-sm md:text-lg text-black text-center max-w-3xl mx-auto break-words";
     return (
-        <motion.section id="sobre" className={sobre}
+        <motion.section id="sobre" data-bg= "auto" className={sobre}
         variants={container}
         initial= "hidden"
         whileInView="visible"
         viewport={{once: true, amount: 0.3}}>
             <motion.h2 className= {sobreH2} variants={item}>Sobre</motion.h2>
             <motion.div className="mt-8 flex justify-center" variants={item}>
-                <div className="bg-[#E9006E] w-80 h-48 rounded-xl flex items-center justify-center mb-8 border-4 border-white" variants={item}></div>
+                <div className="bg-[#d3c912] w-80 h-48 rounded-xl flex items-center justify-center mb-8 border-4 border-white" variants={item}></div>
             </motion.div>
-            <motion.p className= {sobreP} variants={item}>Descrição sobre ela aqui. bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</motion.p>
-            <motion.p className={sobreP} variants={item}>Área de atuação, tipos de fotografia ou serviços</motion.p>
-            <motion.p className={sobreP} variants={item}>Diferenciais: bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</motion.p>
+            <motion.p className= {sobreP} variants={item}>Me chamo Maysa de Castro Lima, estudante de Publicidade e Propaganda pela faculdade Unialfa, atuando na área de criação de contéudo visual há 3 anos. Sou apaixonada por fotografia, conhecer novos lugares e ouvir música. Meu trabalho é clean, leve e focado em captar a essência de cada momento.</motion.p>
+            <motion.p className={sobreP} variants={item}><span className="underline decoration-1">Meus diferencias:</span> Habilidades em edição, um olhar estratégico e cinematográfico para captação de imagens.</motion.p>
+            <motion.p className={sobreP} variants={item}><span className="underline decoration-1">Projetos e experiências passadas:</span> Cobertura de casamentos, batizados, aniversários e criação de conteúdo visual para profissionais.</motion.p>
         </motion.section>
     )
 }

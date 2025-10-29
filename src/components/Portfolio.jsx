@@ -4,16 +4,16 @@ import PortfolioCard from "./PortfolioCard";
 import { useState } from "react";
 
 function Portfolio() {
-    const portfolio = "py-16 px-4 bg-gradient-to-b from-[#21221C] to-[#D3C912]";
-    const portfolioH2 = "text-3xl md:text-4xl font-bold text-white mb-8 text-center";
+    const portfolio = "py-16 px-4 bg-gradient-to-b from-[#ffffff] to-[#bfbfbf]";
+    const portfolioH2 = "text-3xl md:text-4xl font-bold text-black mb-8 text-center";
     const portfolioDiv = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto";
     const itens = [
-        {title: "Foto 1", image:"bg-[#E9006E]"},
-        {title: "Foto 2", image:"bg-[#E9006E]"},
-        {title: "Foto 3", image:"bg-[#E9006E]"},
-        {title: "Foto 4", image:"bg-[#E9006E]"},
-        {title: "Foto 5", image:"bg-[#E9006E]"},
-        {title: "Foto 6", image:"bg-[#E9006E]"},
+        {title: "Foto 1", image:"bg-[#d3c912]"},
+        {title: "Foto 2", image:"bg-[#d3c912]"},
+        {title: "Foto 3", image:"bg-[#d3c912]"},
+        {title: "Foto 4", image:"bg-[#d3c912]"},
+        {title: "Foto 5", image:"bg-[#d3c912]"},
+        {title: "Foto 6", image:"bg-[#d3c912]"},
     ];
     const [selectedCard, setSelectedCard] = useState(null)
 
@@ -21,6 +21,7 @@ function Portfolio() {
         <>
         <motion.section 
         id="portfolio" 
+        data-bg= "auto"
         className= {portfolio} 
         variants= {container}
         initial= "hidden"
@@ -53,17 +54,17 @@ function Portfolio() {
                  transition= {{duration: 0.5}}
                  >
                     <motion.div 
-                    className="bg-[#E9006E] p-8 rounded-lg shadow-lg relative max-w-md w-full"
+                    className="bg-[#d3c912] p-8 rounded-lg shadow-lg relative max-w-md w-full"
                     onClick= {(e) => e.stopPropagation()}
                     initial= {{opacity: 0, scale: 0.8}}
                     animate= {{opacity: 1, scale: 1}}
                     exit= {{opacity: 0, scale: 0.8}}
                     transition= {{duration: 0.3}}
                     >
-                        <h3 className="text-2xl font-bold text-white mb-4">{selectedCard.title}</h3>
-                        <p className="text-white">Aqui vão os detalhes do projeto</p>
+                        <h3 className="text-2xl font-bold text-black mb-4">{selectedCard.title}</h3>
+                        <p className="text-black">Aqui vão os detalhes do projeto</p>
                         <button 
-                        className="absolute top-2 right-2 text-white font-bold text-xl"
+                        className="absolute top-2 right-2 text-black font-bold text-xl"
                         onClick= {() => setSelectedCard(null)}>
                             x
                         </button>
