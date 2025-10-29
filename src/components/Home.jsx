@@ -82,9 +82,9 @@ function Home() {
                         href="https://www.instagram.com/bymaysalima/" 
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        className="ml-2 hover:shadow-lg hover:border-2 drop-shadow-[0_0_20px_#FFFF] rounded-lg p-1"
+                        className="ml-2 hover:shadow-lg hover:border-2 rounded-lg p-1"
                     >
-                        <span className="text-white underline decoration-1 font-libreBaskerville">BYMAYSALIMA</span>
+                        <span className="text-white underline decoration-1 font-libreBaskerville drop-shadow-[0_0_20px_#FFFF]">BYMAYSALIMA</span>
                     </motion.a>
                 </motion.p>
 
