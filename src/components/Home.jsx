@@ -84,7 +84,7 @@ function Home() {
                         rel="noopener noreferrer" 
                         className="ml-2 hover:shadow-lg hover:border-2 rounded-lg p-1"
                     >
-                        <span className="text-white underline decoration-1 font-libreBaskerville drop-shadow-[0_0_20px_#FFFF]">BYMAYSALIMA</span>
+                        <span className="text-white underline decoration-1 font-libreBaskerville drop-shadow-sm md:drop-shadow-[0_0_20px_#FFFF]">BYMAYSALIMA</span>
                     </motion.a>
                 </motion.p>
 
