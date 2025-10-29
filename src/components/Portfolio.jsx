@@ -5,7 +5,7 @@ import { useState } from "react";
 
 function Portfolio() {
     const portfolio = "py-16 px-4 bg-gradient-to-b from-[#ffffff] to-[#bfbfbf]";
-    const portfolioH2 = "text-3xl md:text-4xl font-bold text-black mb-8 text-center";
+    const portfolioH2 = "text-3xl md:text-4xl font-playfair text-black mb-8 text-center";
     const portfolioDiv = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto";
     const itens = [
         {title: "Foto 1", image:"bg-[#d3c912]"},
@@ -61,8 +61,8 @@ function Portfolio() {
                     exit= {{opacity: 0, scale: 0.8}}
                     transition= {{duration: 0.3}}
                     >
-                        <h3 className="text-2xl font-bold text-black mb-4">{selectedCard.title}</h3>
-                        <p className="text-black">Aqui vão os detalhes do projeto</p>
+                        <h3 className="text-2xl font-playfair text-black mb-4">{selectedCard.title}</h3>
+                        <p className="font-poppins text-black">Aqui vão os detalhes do projeto</p>
                         <button 
                         className="absolute top-2 right-2 text-black font-bold text-xl"
                         onClick= {() => setSelectedCard(null)}>

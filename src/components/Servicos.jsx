@@ -19,7 +19,7 @@ function Servicos() {
       viewport={{ once: true }}
       >
       <motion.h2 
-        className="text-3xl md:text-4xl font-bold text-black mb-8 text-center"
+        className="text-3xl md:text-4xl font-playfair text-black mb-8 text-center"
         variants={item}
         >
         Produção de Conteúdo
@@ -37,12 +37,12 @@ function Servicos() {
             transition={{ duration: 0, ease: "easeOut" }}
           >
             <div>
-              <h3 className="text-2xl font-semibold mb-2">{s.titulo}</h3>
-              <p className="text-sm opacity-90 mb-4">{s.descricao}</p>
+              <h3 className="text-2xl font-libreBaskerville mb-2">{s.titulo}</h3>
+              <p className="font-poppins text-sm opacity-90 mb-4">{s.descricao}</p>
             </div>
             <div className="flex items-center justify-between">
-              <span className="font-bold text-lg">{s.preco}</span>
-              <button className="bg-[#000000] text-[#d3c912] px-3 py-1 rounded font-semibold hover:bg-opacity-80 transition"
+              <span className="font-poppins text-lg">{s.preco}</span>
+              <button className="bg-[#000000] text-[#d3c912] px-3 py-1 rounded font-poppins hover:bg-opacity-80 transition"
               onClick={() => document.getElementById('contato').scrollIntoView({behavior: 'smooth'})}>
                 Contato
               </button>
@@ -64,7 +64,7 @@ function Servicos() {
       viewport={{ once: true }}
       >
       <motion.h2 
-        className="text-3xl md:text-4xl font-bold text-black mb-8 text-center"
+        className="text-3xl md:text-4xl font-playfair text-black mb-8 text-center"
         variants={item}
         >
         Cobertura de Eventos
@@ -82,12 +82,12 @@ function Servicos() {
             transition={{ duration: 0, ease: "easeOut" }}
           >
             <div>
-              <h3 className="text-2xl font-semibold mb-2">{s.titulo}</h3>
-              <p className="text-sm opacity-90 mb-4">{s.descricao}</p>
+              <h3 className="text-2xl font-libreBaskerville mb-2">{s.titulo}</h3>
+              <p className="font-poppins text-sm opacity-90 mb-4">{s.descricao}</p>
             </div>
             <div className="flex items-center justify-between">
-              <span className="font-bold text-lg">{s.preco}</span>
-              <button className="bg-[#000000] text-[#d3c912] px-3 py-1 rounded font-semibold hover:bg-opacity-80 transition"
+              <span className="font-poppins text-lg">{s.preco}</span>
+              <button className="bg-[#000000] text-[#d3c912] px-3 py-1 rounded font-poppins hover:bg-opacity-80 transition"
               onClick={() => document.getElementById('contato').scrollIntoView({behavior: 'smooth'})}>
                 Contato
               </button>

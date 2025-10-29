@@ -133,12 +133,12 @@ function Header() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
       >
-        <h1 className="text-2xl font-bold">
+        <h1 className="text-2xl font-libreBaskerville">
           Maysa <span className="text-[#D3C912]">Lima</span>
         </h1>
 
         {/* Menu desktop */}
-        <nav className="hidden md:flex space-x-6">
+        <nav className="hidden md:flex space-x-6 font-poppins">
           {navItems.map((item) => (
             <a
               key={item.href}

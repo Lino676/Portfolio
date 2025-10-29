@@ -15,7 +15,7 @@ const PortfolioCard = ({ title, image, index, onClick}) => {
             <motion.div className="absolute inset-0 flex items-center justify-center bg-black/75 opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-lg"
             initial= {{opacity: 0}}
             whileHover={{opacity: 1}}>
-            <p className="text-white font-semibold text-lg">{title}</p></motion.div>
+            <p className="text-white font-poppins text-lg">{title}</p></motion.div>
             <ExpandIcon size= {20}/>
         </motion.div>
     );
