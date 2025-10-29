@@ -18,7 +18,7 @@ function Contato() {
         viewport= {{once: true}}>
             <motion.div className= {footerDiv}>
             <motion.div className= {contato}>
-                <motion.p className="text-lg font-poppins">Email: <motion.a href="#" className= "ml-2 hover:text-[#d3c912] cursor-pointer transition-transform duration-300">contato@exemplo </motion.a></motion.p>
+                <motion.p className="text-lg font-poppins">Email: <motion.a href="#" className= "ml-2 hover:text-[#d3c912] cursor-pointer transition-transform duration-300">maysalima17@gmail.com</motion.a></motion.p>
             </motion.div>
             <motion.div className= {contato}>
                 <motion.p className="text-lg font-poppins">Telefone: <motion.a href="tel:+5562985871365" className= {redesSociais}><span className="hover:text-[#d3c912]">(62) 98587-1365</span></motion.a></motion.p>
