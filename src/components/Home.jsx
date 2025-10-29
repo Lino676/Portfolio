@@ -63,7 +63,7 @@ function Home() {
                     whileHover={{ scale: 1.1 }}
                 >
                     <motion.div 
-                        className="w-60 h-60 rounded-full flex items-center justify-center border-4 border-white mb-8 cursor-pointer shadow-lg overflow-hidden mt-4"
+                        className="w-60 h-60 rounded-full flex items-center justify-center border-4 border-white mb-8 cursor-pointer shadow-lg overflow-hidden mt-4 drop-shadow-sm md:drop-shadow-[0_0_20px_#FFFF]"
                         animate={{ rotateY: angulo }}
                         transition={{ duration: 0.5, ease: "easeInOut" }}
                         style={{ transformStyle: "preserve-3d" }}
