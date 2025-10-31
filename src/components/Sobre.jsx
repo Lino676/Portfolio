@@ -16,9 +16,11 @@ function Sobre() {
             <motion.div className="mt-8 flex justify-center" variants={item}>
                 <img src= {SobreMaysa} alt= "Foto do Sobre" className="bg-[#d3c912] w-80 h-92 rounded-xl flex items-center justify-center mb-8 border-4 border-white drop-shadow-[0_0_20px_#FFFF]" variants={item}/>
             </motion.div>
-            <motion.p className= {sobreP} variants={item}>Me chamo Maysa de Castro Lima, estudante de Publicidade e Propaganda pela faculdade Unialfa, atuando na área de criação de contéudo visual há 3 anos. Sou apaixonada por fotografia, conhecer novos lugares e ouvir música. Meu trabalho é clean, leve e focado em captar a essência de cada momento.</motion.p>
-            <motion.p className={sobreP} variants={item}><span className="underline decoration-1">Meus diferencias:</span> Habilidades em edição, um olhar estratégico e cinematográfico para captação de imagens.</motion.p>
-            <motion.p className={sobreP} variants={item}><span className="underline decoration-1">Projetos e experiências passadas:</span> Cobertura de casamentos, batizados, aniversários e criação de conteúdo visual para profissionais.</motion.p>
+            <motion.p className= {sobreP} variants={item}><span className="text-xl underline decoration-1">Prazer, Maysa de Castro Lima!</span></motion.p>
+            <motion.p className= {sobreP} variants={item}>Estudante de Publicidade e Propaganda pela Unialfa e apaixonada por transformar momentos em artes que falam por si. Há 3 anos atuo na criação de conteúdo visual, explorando luz, cor e sentimento em cada projeto. Amo fotografia, conhecer novos lugares e ouvir música, fontes que inspiram meu olhar e dão ritmo ao meu processo criativo. </motion.p>
+            <motion.p className= {sobreP} variants={item}> Meu estilo é clean, leve e autêntico, guiado pela busca em captar a essência e a emoção de cada instante. Acredito que cada foto tem sua própria história, meu papel é contá-la com sensibilidade e propósito.</motion.p>
+            <motion.p className={sobreP} variants={item}><span className="underline decoration-1">Meus diferencias:</span> <br />Domínio em edição e um olhar estratégico e cinematográfico para captação de imagens, unindo técnica, estética e emoção de forma harmoniosa.</motion.p>
+            <motion.p className={sobreP} variants={item}><span className="underline decoration-1">Projetos e experiências passadas:</span> <br />Realizei coberturas de casamentos, batizados e aniversários, além da criação de conteúdo visual para profissionais e marcas que buscam autenticidade e conexão com o público.</motion.p>
         </motion.section>
     )
 }

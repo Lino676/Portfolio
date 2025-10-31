@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import bannerMaysa from "../imagens/banner.jpeg";
-import bannerMaysaDesenho from "../imagens/bannerDesenho.png";
+import LogoMaysa from "../imagens/LogoMaysa.png";
 
 function Home() {
 
@@ -63,16 +63,16 @@ function Home() {
                     whileHover={{ scale: 1.1 }}
                 >
                     <motion.div 
-                        className="w-60 h-60 rounded-full flex items-center justify-center border-4 border-white mb-8 cursor-pointer shadow-lg overflow-hidden mt-4 drop-shadow-sm md:drop-shadow-[0_0_20px_#FFFF]"
+                        className="w-60 h-60 rounded-full flex items-center justify-center border-4 border-white mb-8 cursor-pointer shadow-lg overflow-hidden mt-4 drop-shadow-sm md:drop-shadow-[0_0_20px_#FFFF] perspective-1000"
                         animate={{ rotateY: angulo }}
                         transition={{ duration: 0.5, ease: "easeInOut" }}
                         style={{ transformStyle: "preserve-3d" }}
                     >
                         <img 
-                            src={isFront ? bannerMaysa : bannerMaysaDesenho} 
+                            src={isFront ? bannerMaysa : LogoMaysa} 
                             alt="Banner Maysa" 
                             className="w-full h-full object-cover"
-                            style={{ backfaceVisibility: "hidden" }}
+                            style={{ backfaceVisibility: "hidden"}}
                         />
                     </motion.div>
                 </motion.div>

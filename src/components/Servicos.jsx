@@ -9,6 +9,12 @@ function Servicos() {
   ];
   return (
     <>
+    <motion.h2 
+        className="text-4xl md:text-5xl font-playfair text-black mb-10 text-center"
+        variants={item}
+        >
+        Serviços:
+      </motion.h2>
     <motion.section 
       id="servicos"
       data-bg= "auto"
@@ -32,9 +38,9 @@ function Servicos() {
         {servicos.map((s, i) => (
           <motion.div 
           key={i}
-            className="bg-[#ffffff] rounded-lg p-6 text-black shadow-lg transition-transform duration-500 flex flex-col justify-between border-2 border-black"
-            whileHover={{scale: 1.05, filter: "brightness(1.2)"}}
-            transition={{ duration: 0, ease: "easeOut" }}
+          className="bg-[#ffffff] rounded-lg p-6 text-black shadow-lg transition-transform duration-500 flex flex-col justify-between border-2 border-black"
+          whileHover={{scale: 1.05, filter: "brightness(1.2)"}}
+          transition={{ duration: 0, ease: "easeOut" }}
           >
             <div>
               <h3 className="text-2xl font-libreBaskerville mb-2">{s.titulo}</h3>
@@ -77,9 +83,9 @@ function Servicos() {
         {servicos.map((s, i) => (
           <motion.div 
           key={i}
-            className="bg-[#ffffff] rounded-lg p-6 text-black shadow-lg transition-transform duration-500 flex flex-col justify-between border-2 border-black"
-            whileHover={{scale: 1.05, filter: "brightness(1.2)"}}
-            transition={{ duration: 0, ease: "easeOut" }}
+          className="bg-[#ffffff] rounded-lg p-6 text-black shadow-lg transition-transform duration-500 flex flex-col justify-between border-2 border-black"
+          whileHover={{scale: 1.05, filter: "brightness(1.2)"}}
+          transition={{ duration: 0, ease: "easeOut" }}
           >
             <div>
               <h3 className="text-2xl font-libreBaskerville mb-2">{s.titulo}</h3>
