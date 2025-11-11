@@ -104,19 +104,26 @@ function Servicos() {
         {servicosConteudo.map((s, i) => (
           <motion.div 
           key={i}
-          className="bg-[#ffffff] rounded-lg p-6 text-black shadow-lg transition-transform duration-500 flex flex-col justify-between border-2 border-black"
+          className="bg-[#ffffff] rounded-lg p-6 text-black shadow-lg transition-transform duration-500 flex flex-col justify-between border-2 border-black cursor-pointer"
           whileHover={{scale: 1.05, filter: "brightness(1.2)"}}
           transition={{ duration: 0, ease: "easeOut" }}
+          onClick={() => setSelectedCard(s)}
           >
             <div>
               <h3 className="text-2xl font-libreBaskerville mb-2">{s.titulo}</h3>
               <p className="font-poppins text-sm opacity-90 mb-4">{s.descricao}</p>
             </div>
             <div className="flex items-center justify-between">
-              <button className="bg-[#000000] text-[#d3c912] px-3 py-1 rounded font-poppins hover:bg-opacity-80 transition"
-              onClick={() => document.getElementById('contato').scrollIntoView({behavior: 'smooth'})}>
+              <a
+                href={`https://wa.me/5562985871365?text=${encodeURIComponent( `Olá Maysa! Vi seu portfólio e gostaria de saber mais sobre o ${s.titulo}.` )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#000000] text-[#d3c912] px-3 py-1 rounded font-poppins hover:bg-opacity-80 transition"
+                onClick={(e) => {
+                  e.stopPropagation(); }}
+                  >
                 Contato
-              </button>
+              </a>
             </div>
           </motion.div>
         ))}
@@ -142,7 +149,7 @@ function Servicos() {
       </motion.h2>
 
       <motion.h2
-        className= "text-2xl md:text-4xl font-playfair text-black mb-10 text-center"
+        className= "text-2xl md:text-3xl font-playfair text-black mb-10 text-center"
         variants={item}
         >
           <motion.div className="mb-4">
