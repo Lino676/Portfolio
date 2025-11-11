@@ -189,7 +189,7 @@ function Servicos() {
              {selectedCard && (
                  <motion.div 
                  // modal abaixo
-                 className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
+                 className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 "
                  onClick={() => setSelectedCard(null)}
                  initial= {{opacity: 0}}
                  animate= {{opacity: 1}}
@@ -197,7 +197,7 @@ function Servicos() {
                  transition= {{duration: 0.5}}
                  >
                     <motion.div 
-                    className="bg-[#ffffff] p-8 rounded-lg shadow-lg relative max-w-md w-full"
+                    className="bg-[#ffffff] p-4 sm:p-6 md:p-8 rounded-lg shadow-lg relative w-full max-w-xs sm:max-w-sm md:max-w-md max-h-[80vh] overflow-y-auto"
                     onClick= {(e) => e.stopPropagation()}
                     initial= {{opacity: 0, scale: 0.8}}
                     animate= {{opacity: 1, scale: 1}}
