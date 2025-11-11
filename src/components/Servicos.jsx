@@ -1,7 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { container, item } from "../animations/animationVariants";
 import { useState } from "react";
-import { p } from "framer-motion/client";
 
 function Servicos() {
   const servicosConteudo = [
