@@ -31,7 +31,8 @@ function Contato() {
                     <FontAwesomeIcon icon = {faWhatsapp} className="w-8 h-8 sm:w-10 sm:h-10"/>
                 </motion.a>
             </motion.div>
-            <motion.p className="text-sm opacity-80"> <span className="text-white font-poppins">@ 2025 Maysa. Todos os direitos reservados.</span></motion.p>
+            <motion.p className="text-lg opacity-80"> <span className="text-white font-poppins underline decoration-1">Será um prazer fazer parte do seu sonho!</span></motion.p>
+            <motion.p className="text-sm opacity-50"> <span className="text-white font-poppins">@ 2025 Maysa. Todos os direitos reservados.</span></motion.p>
             </motion.div>
         </motion.footer>
     )
