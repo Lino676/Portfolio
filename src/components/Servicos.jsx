@@ -4,7 +4,7 @@ import { useState } from "react";
 
 function Servicos() {
   const servicosConteudo = [
-    { titulo: "Desenvolvimento", descricao: "Criação de sites modernos e responsivos."},
+    { titulo: "Desenvolvimento", descricao: "Criação de sites modernos e responsivo."},
     { titulo: "Design UI/UX", descricao: "Interfaces intuitivas e foco na experiência do usuário."},
     { titulo: "Manutenção e Suporte", descricao: "Ajustes, otimizações e acompanhamento técnico."},
   ];
