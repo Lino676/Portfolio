@@ -4,9 +4,22 @@ import { useState } from "react";
 
 function Servicos() {
   const servicosConteudo = [
-    { titulo: "Desenvolvimento", descricao: "Criação de sites modernos e responsivo."},
-    { titulo: "Design UI/UX", descricao: "Interfaces intuitivas e foco na experiência do usuário."},
-    { titulo: "Manutenção e Suporte", descricao: "Ajustes, otimizações e acompanhamento técnico."},
+    { titulo: "Gravação de Vídeos Avulsos", subtitulo: "Contéudos gerais", descricao: "Clique para saiba mais!", descricaoModal: (
+    <>
+    <p className="text-lg mb-4">Gravação para Instagram profissional, Chá-Revelação, Aniversários, Pré-Wedd, Vídeos Institucionais, Depoimentos e muito mais!</p>
+    <p className="text-lg mb-8">Vários pacotes disponíveis com várias faixas de valores - consultar no contato!</p>
+    </>
+    )
+  },
+    { titulo: "Fotos via Mobile", subtitulo: "Fotos feitas com o próprio celular", descricao: "Clique para saiba mais!", descricaoModal: (
+    <>
+    <p className="text-lg mb-4">Ideias para eventos menores ou para registrar momentos especiais.</p>
+    <p className="text-lg mb-4">Embora a qualidade seja inferior à de uma câmera digital, é uma opção prática e acessível para capturar a essência do momento!</p>
+    <p className="text-lg mb-8">Vários pacotes disponíveis com várias faixas de valores - consultar no contato!</p>
+    </>
+    )
+  },
+
   ];
   const servicosEventos = [
     { titulo: "Pacote Premium", subtitulo: "Stories |+ Todo o evento", descricao: "Clique para saiba mais!", descricaoModal: (
@@ -67,6 +80,14 @@ function Servicos() {
        )
        },
   ];
+  const servicosGeral = [
+    { titulo: "StoryMaker", subtitulo: "Eventos em gerais", descricao: "Clique para saiba mais!", descricaoModal: (
+    <>
+    <p className="text-lg mb-8">Vários pacotes disponíveis com várias faixas de valores - consultar no contato!</p>
+    </>
+    )
+  },
+  ];
 
   const [selectedCard, setSelectedCard] = useState(null);
 
@@ -110,8 +131,10 @@ function Servicos() {
           onClick={() => setSelectedCard(s)}
           >
             <div>
-              <h3 className="text-2xl font-libreBaskerville mb-2">{s.titulo}</h3>
-              <p className="font-poppins text-sm opacity-90 mb-4">{s.descricao}</p>
+              <h3 className="text-2xl font-libreBaskerville">{s.titulo}</h3> {s.subtitulo && (
+                <p className="font-libreBaskerville text-sm text-[#d3c912] underline decoration-1 mb-4">{s.subtitulo}</p>
+              )}
+              <p className="font-poppins text-sm opacity-90 mb-6">{s.descricao}</p>
             </div>
             <div className="flex items-center justify-between">
               <a
@@ -132,6 +155,8 @@ function Servicos() {
     
     {/* Cobertura de Eventos */}
 
+    {/* Casamentos */}
+
     <motion.section 
       id="servicos"
       data-bg= "auto"
@@ -145,17 +170,15 @@ function Servicos() {
         className="text-3xl md:text-4xl font-playfair text-black mb-10 text-center"
         variants={item}
         >
-        Cobertura de Eventos
+        <motion.p>Cobertura de Eventos</motion.p>
+        <motion.p><span className="text-xl underline decoration-1">( StoryMaker | VideoMaker Mobile )</span></motion.p>
       </motion.h2>
 
       <motion.h2
         className= "text-2xl md:text-3xl font-playfair text-black mb-10 text-center"
         variants={item}
         >
-          <motion.div className="mb-4">
-            <motion.p>Casamento</motion.p>
-          </motion.div>
-          <motion.p><span className="text-xl underline decoration-1">( StoryMaker | VideoMaker Mobile )</span></motion.p>
+        <motion.p>Casamentos</motion.p>
       </motion.h2>
 
       <motion.div 
@@ -192,6 +215,60 @@ function Servicos() {
         ))}
       </motion.div>
     </motion.section>
+
+    {/* StoryMaker eventos gerais */}
+
+    <motion.section 
+      id="servicos"
+      data-bg= "auto"
+      className="py-16 px-4 bg-[#ffffff]"
+      variants={container}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      >
+      <motion.h2
+        className= "text-2xl md:text-3xl font-playfair text-black mb-10 text-center"
+        variants={item}
+        >
+        <motion.p>Eventos em Geral</motion.p>
+      </motion.h2>
+
+      <motion.div 
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto"
+        variants={item}
+        >
+        {servicosGeral.map((s, i) => (
+          <motion.div 
+          key={i}
+          className="bg-[#ffffff] rounded-lg p-6 text-black shadow-lg transition-transform duration-500 flex flex-col justify-between border-2 border-black cursor-pointer"
+          whileHover={{scale: 1.05, filter: "brightness(1.2)"}}
+          transition={{ duration: 0, ease: "easeOut" }}
+          onClick={() => setSelectedCard(s)}
+          >
+            <div>
+              <h3 className="text-2xl font-libreBaskerville">{s.titulo}</h3> {s.subtitulo && (
+                <p className="font-libreBaskerville text-sm text-[#d3c912] underline decoration-1 mb-4">{s.subtitulo}</p>
+              )}
+              <p className="font-poppins text-sm opacity-90 mb-6">{s.descricao}</p>
+            </div>
+            <div className="flex items-center justify-between">
+              <a
+                href={`https://wa.me/5562985871365?text=${encodeURIComponent( `Olá Maysa! Vi seu portfólio e gostaria de saber mais sobre o ${s.titulo}.` )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#000000] text-[#d3c912] px-3 py-1 rounded font-poppins hover:bg-opacity-80 transition"
+                onClick={(e) => {
+                  e.stopPropagation(); }}
+                  >
+                Contato
+              </a>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
+    </motion.section>
+
      <AnimatePresence> 
              {selectedCard && (
                  <motion.div 
