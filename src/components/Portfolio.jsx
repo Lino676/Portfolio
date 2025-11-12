@@ -54,7 +54,7 @@ function Portfolio() {
                  transition= {{duration: 0.5}}
                  >
                     <motion.div 
-                    className="bg-[#d3c912] p-8 rounded-lg shadow-lg relative max-w-md w-full"
+                    className="bg-[#d3c912] p-4 sm:p-6 md:p-8 rounded-lg shadow-lg relative w-full max-w-xs sm:max-w-sm md:max-w-md max-h[80vh] overflow-y-auto"
                     onClick= {(e) => e.stopPropagation()}
                     initial= {{opacity: 0, scale: 0.8}}
                     animate= {{opacity: 1, scale: 1}}
@@ -62,7 +62,7 @@ function Portfolio() {
                     transition= {{duration: 0.3}}
                     >
                         <h3 className="text-2xl font-playfair text-black mb-4">{selectedCard.title}</h3>
-                        <p className="font-poppins text-black">Aqui vão os detalhes do projeto</p>
+                        <p className="font-poppins text-black mb-8">Aqui vão os detalhes do projeto</p>
                         <button 
                         className="absolute top-2 right-2 text-black font-bold text-xl"
                         onClick= {() => setSelectedCard(null)}>
