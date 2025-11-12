@@ -13,12 +13,12 @@ function Home() {
 
     const container = {
         hidden: { opacity: 0 },
-        visible: { opacity: 1, transition: { duration: 1.5, staggerChildren: 0.5 } },
+        visible: { opacity: 1, transition: { duration: 1.0, staggerChildren: 0.2 } },
     };
 
     const item = {
         hidden: { opacity: 0, y: 30 },
-        visible: { opacity: 1, y: 0, transition: { duration: 2, ease: "easeOut" } },
+        visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } },
     };
 
     const [girando, setGirando] = useState(false);

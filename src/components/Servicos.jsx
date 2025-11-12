@@ -81,7 +81,7 @@ function Servicos() {
        },
   ];
   const servicosGeral = [
-    { titulo: "StoryMaker", subtitulo: "Eventos em gerais", descricao: "Clique para saiba mais!", descricaoModal: (
+    { titulo: "StoryMaker Geral", subtitulo: "Eventos em gerais", descricao: "Clique para saiba mais!", descricaoModal: (
     <>
     <p className="text-lg mb-8">Vários pacotes disponíveis com várias faixas de valores - consultar no contato!</p>
     </>
@@ -138,7 +138,7 @@ function Servicos() {
             </div>
             <div className="flex items-center justify-between">
               <a
-                href={`https://wa.me/5562985871365?text=${encodeURIComponent( `Olá Maysa! Vi seu portfólio e gostaria de saber mais sobre o ${s.titulo}.` )}`}
+                href={`https://wa.me/5562985871365?text=${encodeURIComponent( `Olá Maysa! Vi seu portfólio e gostaria de saber mais sobre o pacote ${s.titulo}.` )}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-[#000000] text-[#d3c912] px-3 py-1 rounded font-poppins hover:bg-opacity-80 transition"
@@ -201,7 +201,7 @@ function Servicos() {
             </div>
             <div className="flex items-center justify-between">
               <a
-                href={`https://wa.me/5562985871365?text=${encodeURIComponent( `Olá Maysa! Vi seu portfólio e gostaria de saber mais sobre o ${s.titulo}.` )}`}
+                href={`https://wa.me/5562985871365?text=${encodeURIComponent( `Olá Maysa! Vi seu portfólio e gostaria de saber mais sobre o pacote ${s.titulo}.` )}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-[#000000] text-[#d3c912] px-3 py-1 rounded font-poppins hover:bg-opacity-80 transition"
@@ -254,7 +254,7 @@ function Servicos() {
             </div>
             <div className="flex items-center justify-between">
               <a
-                href={`https://wa.me/5562985871365?text=${encodeURIComponent( `Olá Maysa! Vi seu portfólio e gostaria de saber mais sobre o ${s.titulo}.` )}`}
+                href={`https://wa.me/5562985871365?text=${encodeURIComponent( `Olá Maysa! Vi seu portfólio e gostaria de saber mais sobre o pacote ${s.titulo}.` )}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-[#000000] text-[#d3c912] px-3 py-1 rounded font-poppins hover:bg-opacity-80 transition"
