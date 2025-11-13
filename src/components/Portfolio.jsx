@@ -2,23 +2,27 @@ import { motion, AnimatePresence } from "framer-motion";
 import { container, item } from "../animations/animationVariants";
 import PortfolioCard from "./PortfolioCard";
 import { useState } from "react";
+import CircularGallery from "../animations/CircularGallery";
+import SimpleGallery3D from "../animations/galeria";
 
 function Portfolio() {
     const portfolio = "py-16 px-4 bg-gradient-to-b from-[#ffffff] to-[#bfbfbf]";
     const portfolioH2 = "text-3xl md:text-4xl font-playfair text-black mb-8 text-center";
     const portfolioDiv = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto";
     const itens = [
-        {title: "Foto 1", image:"bg-[#d3c912]"},
-        {title: "Foto 2", image:"bg-[#d3c912]"},
-        {title: "Foto 3", image:"bg-[#d3c912]"},
-        {title: "Foto 4", image:"bg-[#d3c912]"},
-        {title: "Foto 5", image:"bg-[#d3c912]"},
-        {title: "Foto 6", image:"bg-[#d3c912]"},
+        {title: "Foto 1", image:'/imagens/IMG_0006.JPG'},
+        {title: "Foto 2", image:'/imagens/IMG_0013.JPG'},
+        {title: "Foto 3", image:'/imagens/IMG_0018.JPG'},
+        {title: "Foto 4", image:'/imagens/IMG_0030.JPG'},
+        {title: "Foto 5", image:'/imagens/IMG_0032.JPG'},
+        {title: "Foto 6", image:'/imagens/IMG_0039.JPG'},
     ];
     const [selectedCard, setSelectedCard] = useState(null)
 
     return (
         <>
+
+
         <motion.section 
         id="portfolio" 
         data-bg= "auto"
@@ -29,7 +33,16 @@ function Portfolio() {
         viewport= {{once: true}}
         >
            <motion.h2 className= {portfolioH2} variants= {item}>Portfólio</motion.h2>
-            <motion.div className= {portfolioDiv} variants= {item}>
+
+            {/* galeria circular abaixo */}
+
+            {<motion.div className="w-full h-[600px] ">
+                <CircularGallery items={itens} bend={0}     borderRadius={0.05} />
+            </motion.div> }
+
+            {/* <SimpleGallery3D /> */}
+
+             {/* <motion.div className= {portfolioDiv} variants= {item}>
                 {itens.map ((card, i) => (
                     <PortfolioCard 
                     key={i} 
@@ -39,7 +52,8 @@ function Portfolio() {
                     onClick={() => setSelectedCard(card)}
                     />
                 ))}
-            </motion.div>
+            </motion.div> */}
+            
         </motion.section>
 
         <AnimatePresence> 
