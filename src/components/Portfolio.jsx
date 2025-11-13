@@ -2,8 +2,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { container, item } from "../animations/animationVariants";
 import PortfolioCard from "./PortfolioCard";
 import { useState } from "react";
-import CircularGallery from "../animations/CircularGallery";
-import SimpleGallery3D from "../animations/galeria";
 
 function Portfolio() {
     const portfolio = "py-16 px-4 bg-gradient-to-b from-[#ffffff] to-[#bfbfbf]";
