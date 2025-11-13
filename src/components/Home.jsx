@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import bannerMaysa from "../imagens/banner.jpeg";
-import LogoMaysa from "../imagens/LogoMaysa.png";
 
 function Home() {
 
@@ -69,7 +67,7 @@ function Home() {
                         style={{ transformStyle: "preserve-3d" }}
                     >
                         <img 
-                            src={isFront ? bannerMaysa : LogoMaysa} 
+                            src={isFront ? "/imagens/banner.jpeg" : "/imagens/LogoMaysa.png"} 
                             alt="Banner Maysa" 
                             className="w-full h-full object-cover"
                             style={{ backfaceVisibility: "hidden"}}
