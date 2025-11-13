@@ -10,12 +10,12 @@ function Portfolio() {
     const portfolioH2 = "text-3xl md:text-4xl font-playfair text-black mb-8 text-center";
     const portfolioDiv = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto";
     const itens = [
-        {title: "Foto 1", image:'/imagens/IMG_0006.JPG'},
-        {title: "Foto 2", image:'/imagens/IMG_0013.JPG'},
-        {title: "Foto 3", image:'/imagens/IMG_0018.JPG'},
-        {title: "Foto 4", image:'/imagens/IMG_0030.JPG'},
-        {title: "Foto 5", image:'/imagens/IMG_0032.JPG'},
-        {title: "Foto 6", image:'/imagens/IMG_0039.JPG'},
+        {title: "Foto 1", image:'bg-[#d3c912]'},
+        {title: "Foto 2", image:'bg-[#d3c912]'},
+        {title: "Foto 3", image:'bg-[#d3c912]'},
+        {title: "Foto 4", image:'bg-[#d3c912]'},
+        {title: "Foto 5", image:'bg-[#d3c912]'},
+        {title: "Foto 6", image:'bg-[#d3c912]'},
     ];
     const [selectedCard, setSelectedCard] = useState(null)
 
@@ -36,13 +36,13 @@ function Portfolio() {
 
             {/* galeria circular abaixo */}
 
-            {<motion.div className="w-full h-[600px] ">
+            {/* {<motion.div className="w-full h-[600px] ">
                 <CircularGallery items={itens} bend={0}     borderRadius={0.05} />
-            </motion.div> }
+            </motion.div> } */}
 
             {/* <SimpleGallery3D /> */}
 
-             {/* <motion.div className= {portfolioDiv} variants= {item}>
+             <motion.div className= {portfolioDiv} variants= {item}>
                 {itens.map ((card, i) => (
                     <PortfolioCard 
                     key={i} 
@@ -52,7 +52,7 @@ function Portfolio() {
                     onClick={() => setSelectedCard(card)}
                     />
                 ))}
-            </motion.div> */}
+            </motion.div>
             
         </motion.section>
 
