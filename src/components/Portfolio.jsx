@@ -21,8 +21,6 @@ function Portfolio() {
 
     return (
         <>
-
-
         <motion.section 
         id="portfolio" 
         data-bg= "auto"
@@ -33,14 +31,6 @@ function Portfolio() {
         viewport= {{once: true}}
         >
            <motion.h2 className= {portfolioH2} variants= {item}>Portfólio</motion.h2>
-
-            {/* galeria circular abaixo */}
-
-            {/* {<motion.div className="w-full h-[600px] ">
-                <CircularGallery items={itens} bend={0}     borderRadius={0.05} />
-            </motion.div> } */}
-
-            {/* <SimpleGallery3D /> */}
 
              <motion.div className= {portfolioDiv} variants= {item}>
                 {itens.map ((card, i) => (
