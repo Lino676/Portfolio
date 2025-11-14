@@ -11,3 +11,17 @@ html {
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
 
+/* remove barras horizontais totalmente */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.cursor-grab * {
+  cursor: grab !important;
+}
+
+.cursor-grabbing * {
+  cursor: grabbing !important;
+}

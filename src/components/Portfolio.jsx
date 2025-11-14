@@ -1,12 +1,13 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { container, item } from "../animations/animationVariants";
 import PortfolioCard from "./PortfolioCard";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import GaleriaModal from "./GaleriaModal";
 
 function Portfolio() {
     const portfolio = "py-16 px-4 bg-gradient-to-b from-[#ffffff] to-[#bfbfbf]";
     const portfolioH2 = "text-3xl md:text-4xl font-playfair text-black mb-8 text-center";
-    const portfolioDiv = "grid grid-cols-3 sm:grid-cols-2 md:grid-cols-5 gap-6 max-w-6xl mx-auto";
+    const portfolioDiv = "grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto";
     const itens = [
         {title: "Foto 1", image: '/imagens/IMG_0063.jpg'},
         {title: "Foto 2", image: '/imagens/IMG_0013.JPG'},
@@ -39,11 +40,12 @@ function Portfolio() {
         {title: "Foto 29", image: '/imagens/IMG_8017.jpg'},
         {title: "Foto 30", image: '/imagens/IMG_8030.jpg'}
     ];
-    const [selectedCard, setSelectedCard] = useState(null)
+    const [showGallery, setShowGallery] = useState(false);
+    const [currentIndex, setCurrentIndex] = useState(0);
 
     return (
         <>
-        <motion.section 
+        <motion.section
         id="portfolio" 
         data-bg= "auto"
         className= {portfolio} 
@@ -53,51 +55,39 @@ function Portfolio() {
         viewport= {{once: true}}
         >
            <motion.h2 className= {portfolioH2} variants= {item}>Portfólio</motion.h2>
-
              <motion.div className= {portfolioDiv} variants= {item}>
-                {itens.map ((card, i) => (
+                {itens.slice(0, 3).map ((card, i) => (
                     <PortfolioCard 
-                    key={i} 
-                    title={card.title} 
-                    image= {card.image}
-                    index={i}
-                    onClick={() => setSelectedCard(card)}
+                        key={i} 
+                        title={card.title} 
+                        image= {card.image}
+                        index={i}
+                        onClick={() => {
+                            setCurrentIndex(i);
+                            setShowGallery(true);
+                    }}
                     />
                 ))}
             </motion.div>
-            
         </motion.section>
 
-        <AnimatePresence> 
-             {selectedCard && (
-                 <motion.div 
-                 // modal abaixo
-                 className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
-                 onClick={() => setSelectedCard(null)}
-                 initial= {{opacity: 0}}
-                 animate= {{opacity: 1}}
-                 exit= {{opacity: 0}}
-                 transition= {{duration: 0.5}}
-                 >
-                    <motion.div 
-                    className="bg-[#d3c912] p-4 sm:p-6 md:p-8 rounded-lg shadow-lg relative w-full max-w-xs sm:max-w-sm md:max-w-md max-h[80vh] overflow-y-auto"
-                    onClick= {(e) => e.stopPropagation()}
-                    initial= {{opacity: 0, scale: 0.8}}
-                    animate= {{opacity: 1, scale: 1}}
-                    exit= {{opacity: 0, scale: 0.8}}
-                    transition= {{duration: 0.3}}
-                    >
-                        <h3 className="text-2xl font-playfair text-black mb-4">{selectedCard.title}</h3>
-                        <p className="font-poppins text-black mb-8">Aqui vão os detalhes do projeto</p>
-                        <button 
-                        className="absolute top-2 right-2 text-black font-bold text-xl"
-                        onClick= {() => setSelectedCard(null)}>
-                            x
-                        </button>
-                    </motion.div>
-                </motion.div>
-             )}
-        </AnimatePresence>
+        <motion.div className="flex justify-center bg-[#bfbfbf]">
+                <button 
+                onClick={() => {setCurrentIndex(0); setShowGallery(true); }}
+                className="font-semibold font-poppins bg-white text-[#000000] px-6 py-3 rounded-full hover:bg-[#000000] hover:text-[#d3c912] transition duration-300 mb-8"
+                >
+                    Ver Mais!
+                </button>
+        </motion.div>
+
+        <GaleriaModal 
+        open={showGallery}
+        onClose={() => setShowGallery(false)}
+        itens={itens}
+        currentIndex={currentIndex}
+        setCurrentIndex={setCurrentIndex}
+         />
+
         </>
     );
 }
