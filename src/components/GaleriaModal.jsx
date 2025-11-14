@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 export default function GaleriaModal({
   open,
@@ -20,62 +20,67 @@ export default function GaleriaModal({
   const moved = useRef(false);
   const dragThreshold = 5;
 
-  // Detecta mobile/desktop
+  // Detecta mobile
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
-  // Inércia somente no mobile
+  // Controle de loading da imagem grande
+  const [imgLoaded, setImgLoaded] = useState(false);
+
+  // Pré-carregar todas as imagens
+  useEffect(() => {
+    if (!open) return;
+    itens.forEach((item) => {
+      const img = new Image();
+      img.src = item.image;
+    });
+  }, [open, itens]);
+
+  // Resetar loading ao trocar de imagem
+  useEffect(() => {
+    setImgLoaded(false);
+  }, [currentIndex]);
+
+  // Inércia mobile
   const inertiaScroll = () => {
     if (Math.abs(velocity.current) < 0.1) {
       cancelAnimationFrame(animationFrame.current);
       return;
     }
+
     const slider = thumbsRef.current;
     if (!slider) return;
 
     slider.scrollLeft += velocity.current;
     velocity.current *= 0.95; // suavidade mobile
+
     animationFrame.current = requestAnimationFrame(inertiaScroll);
   };
-
-  // Centraliza a miniatura clicada (desktop e mobile)
-  const scrollToThumb = (index) => {
-    if (!thumbsRef.current) return;
-    const slider = thumbsRef.current;
-    const thumb = slider.children[index];
-    if (!thumb) return;
-
-    const sliderRect = slider.getBoundingClientRect();
-    const thumbRect = thumb.getBoundingClientRect();
-    const offset = thumbRect.left - sliderRect.left - sliderRect.width / 2 + thumbRect.width / 2;
-    slider.scrollBy({ left: offset, behavior: "smooth" });
-  };
-
-  // Executa sempre que currentIndex mudar
-  useEffect(() => {
-    scrollToThumb(currentIndex);
-  }, [currentIndex]);
 
   useEffect(() => {
     const slider = thumbsRef.current;
     if (!slider) return;
 
-    // 👉 DESKTOP — rolagem horizontal suave no wheel
+    // DESKTOP — rolagem horizontal suave no wheel
     if (!isMobile) {
       const handleWheel = (e) => {
         e.preventDefault();
-        slider.scrollLeft += e.deltaY * 0.4;
+        slider.scrollLeft += e.deltaY * 0.4; // velocidade horizontal
       };
+
       slider.addEventListener("wheel", handleWheel, { passive: false });
+
       return () => slider.removeEventListener("wheel", handleWheel);
     }
 
-    // 👉 MOBILE — drag com inércia
+    // MOBILE — drag com inércia
     const handleMouseDown = (e) => {
       isDragging.current = true;
       moved.current = false;
+
       startX.current = e.pageX - slider.offsetLeft;
       scrollLeft.current = slider.scrollLeft;
       velocity.current = 0;
+
       slider.classList.add("cursor-grabbing");
       cancelAnimationFrame(animationFrame.current);
     };
@@ -83,14 +88,20 @@ export default function GaleriaModal({
     const handleMouseUp = () => {
       isDragging.current = false;
       slider.classList.remove("cursor-grabbing");
-      if (moved.current) animationFrame.current = requestAnimationFrame(inertiaScroll);
+
+      if (moved.current) {
+        animationFrame.current = requestAnimationFrame(inertiaScroll);
+      }
     };
 
     const handleMouseMove = (e) => {
       if (!isDragging.current) return;
+
       const x = e.pageX - slider.offsetLeft;
       const walk = x - startX.current;
+
       if (Math.abs(walk) > dragThreshold) moved.current = true;
+
       const prev = slider.scrollLeft;
       slider.scrollLeft = scrollLeft.current - walk * 1.2;
       velocity.current = slider.scrollLeft - prev;
@@ -106,6 +117,19 @@ export default function GaleriaModal({
       document.removeEventListener("mousemove", handleMouseMove);
     };
   }, [open, isMobile]);
+
+  // Centralizar imagem clicada na visualização (desktop)
+  useEffect(() => {
+    if (!isMobile && thumbsRef.current) {
+      const slider = thumbsRef.current;
+      const btn = slider.children[currentIndex];
+      if (btn) {
+        const sliderCenter = slider.offsetWidth / 2;
+        const btnCenter = btn.offsetLeft + btn.offsetWidth / 2;
+        slider.scrollLeft = btnCenter - sliderCenter;
+      }
+    }
+  }, [currentIndex, isMobile]);
 
   return (
     <AnimatePresence>
@@ -135,7 +159,10 @@ export default function GaleriaModal({
               <img
                 src={itens[currentIndex].image}
                 alt={itens[currentIndex].title}
-                className="max-h-[60vh] w-auto object-contain rounded-lg shadow-md"
+                onLoad={() => setImgLoaded(true)}
+                className={`max-h-[60vh] w-auto object-contain rounded-lg shadow-md transition-opacity duration-300 ${
+                  imgLoaded ? "opacity-100" : "opacity-0"
+                }`}
               />
             </div>
 
