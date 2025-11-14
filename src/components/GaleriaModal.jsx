@@ -1,16 +1,10 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 
-export default function GaleriaModal({
-  open,
-  onClose,
-  itens,
-  currentIndex,
-  setCurrentIndex,
-}) {
+export default function GaleriaModal({ open, onClose, itens, currentIndex, setCurrentIndex }) {
   const thumbsRef = useRef(null);
 
-  // Controle mobile (drag)
+  // Drag mobile
   const isDragging = useRef(false);
   const startX = useRef(0);
   const scrollLeft = useRef(0);
@@ -20,13 +14,12 @@ export default function GaleriaModal({
   const moved = useRef(false);
   const dragThreshold = 5;
 
-  // Detecta mobile
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
-  // Controle de loading da imagem grande
+  // Estado de carregamento da imagem grande
   const [imgLoaded, setImgLoaded] = useState(false);
 
-  // Pré-carregar todas as imagens
+  // Pré-carregar todas as imagens grandes
   useEffect(() => {
     if (!open) return;
     itens.forEach((item) => {
@@ -35,10 +28,13 @@ export default function GaleriaModal({
     });
   }, [open, itens]);
 
-  // Resetar loading ao trocar de imagem
+  // Resetar carregamento ao trocar de imagem
   useEffect(() => {
     setImgLoaded(false);
-  }, [currentIndex]);
+    const img = new Image();
+    img.src = itens[currentIndex].image;
+    img.onload = () => setImgLoaded(true);
+  }, [currentIndex, itens]);
 
   // Inércia mobile
   const inertiaScroll = () => {
@@ -51,8 +47,7 @@ export default function GaleriaModal({
     if (!slider) return;
 
     slider.scrollLeft += velocity.current;
-    velocity.current *= 0.95; // suavidade mobile
-
+    velocity.current *= 0.95;
     animationFrame.current = requestAnimationFrame(inertiaScroll);
   };
 
@@ -60,27 +55,21 @@ export default function GaleriaModal({
     const slider = thumbsRef.current;
     if (!slider) return;
 
-    // DESKTOP — rolagem horizontal suave no wheel
     if (!isMobile) {
       const handleWheel = (e) => {
         e.preventDefault();
-        slider.scrollLeft += e.deltaY * 0.4; // velocidade horizontal
+        slider.scrollLeft += e.deltaY * 0.4;
       };
-
       slider.addEventListener("wheel", handleWheel, { passive: false });
-
       return () => slider.removeEventListener("wheel", handleWheel);
     }
 
-    // MOBILE — drag com inércia
     const handleMouseDown = (e) => {
       isDragging.current = true;
       moved.current = false;
-
       startX.current = e.pageX - slider.offsetLeft;
       scrollLeft.current = slider.scrollLeft;
       velocity.current = 0;
-
       slider.classList.add("cursor-grabbing");
       cancelAnimationFrame(animationFrame.current);
     };
@@ -88,20 +77,14 @@ export default function GaleriaModal({
     const handleMouseUp = () => {
       isDragging.current = false;
       slider.classList.remove("cursor-grabbing");
-
-      if (moved.current) {
-        animationFrame.current = requestAnimationFrame(inertiaScroll);
-      }
+      if (moved.current) animationFrame.current = requestAnimationFrame(inertiaScroll);
     };
 
     const handleMouseMove = (e) => {
       if (!isDragging.current) return;
-
       const x = e.pageX - slider.offsetLeft;
       const walk = x - startX.current;
-
       if (Math.abs(walk) > dragThreshold) moved.current = true;
-
       const prev = slider.scrollLeft;
       slider.scrollLeft = scrollLeft.current - walk * 1.2;
       velocity.current = slider.scrollLeft - prev;
@@ -118,7 +101,7 @@ export default function GaleriaModal({
     };
   }, [open, isMobile]);
 
-  // Centralizar imagem clicada na visualização (desktop)
+  // Centralizar imagem clicada no desktop
   useEffect(() => {
     if (!isMobile && thumbsRef.current) {
       const slider = thumbsRef.current;
@@ -156,10 +139,12 @@ export default function GaleriaModal({
 
             {/* Imagem grande */}
             <div className="flex justify-center items-center mb-4">
+              {!imgLoaded && (
+                <div className="w-32 h-32 border-4 border-dashed border-[#bfbfbf] rounded-full animate-spin" />
+              )}
               <img
                 src={itens[currentIndex].image}
                 alt={itens[currentIndex].title}
-                onLoad={() => setImgLoaded(true)}
                 className={`max-h-[60vh] w-auto object-contain rounded-lg shadow-md transition-opacity duration-300 ${
                   imgLoaded ? "opacity-100" : "opacity-0"
                 }`}
