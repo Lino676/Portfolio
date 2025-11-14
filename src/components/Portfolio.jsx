@@ -8,14 +8,14 @@ function Portfolio() {
     const portfolioH2 = "text-3xl md:text-4xl font-playfair text-black mb-8 text-center";
     const portfolioDiv = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-6 max-w-6xl mx-auto";
     const itens = [
-        {title: "Foto 1", image: '/imagens/IMG_0006.JPG'},
+        {title: "Foto 1", image: '/imagens/IMG_0063.JPG'},
         {title: "Foto 2", image: '/imagens/IMG_0013.JPG'},
-        {title: "Foto 3", image: '/imagens/IMG_0018.JPG'},
-        {title: "Foto4", image: '/imagens/IMG_0030.JPG'},
-        {title: "Foto 5", image: '/imagens/IMG_0032.JPG'},
-        {title: "Foto6", image: '/imagens/IMG_0039.JPG'},
-        {title: "Foto7", image: '/imagens/IMG_0044.JPG'},
-        {title: "Foto8", image: '/imagens/IMG_0063.JPG'},
+        {title: "Foto 3", image: '/imagens/IMG_0039.JPG'},
+        {title: "Foto 4", image: '/imagens/IMG_0032.JPG'},
+        {title: "Foto 5", image: '/imagens/IMG_0030.JPG'},
+        {title: "Foto 6", image: '/imagens/IMG_0044.JPG'},
+        {title: "Foto 7", image: '/imagens/IMG_0018.JPG'},
+        {title: "Foto 8", image: '/imagens/IMG_0006.JPG'},
         {title: "Foto 9", image: '/imagens/IMG_2671.JPG'},
         {title: "Foto 10", image: '/imagens/IMG_2678.JPG'},
         {title: "Foto 11", image: '/imagens/IMG_2735.JPG'},
