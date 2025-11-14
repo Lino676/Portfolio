@@ -25,3 +25,29 @@ html {
 .cursor-grabbing * {
   cursor: grabbing !important;
 }
+
+/* Scrollbar estilizada — apenas desktop */
+@media (min-width: 768px) {
+  .scrollbar-custom {
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #bfbfbf #000000; /* cor da barra e do fundo */
+  }
+
+  .scrollbar-custom::-webkit-scrollbar {
+    height: 12px; /* altura da barra horizontal */
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-track {
+    background: #000; /* fundo */
+    border-radius: 8px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    background: #bfbfbf; /* cor da barrinha */
+    border-radius: 4px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    background: #b5ac10; /* hover mais escuro */
+  }
+}

@@ -6,21 +6,24 @@ export default function GaleriaModal({
   onClose,
   itens,
   currentIndex,
-  setCurrentIndex
+  setCurrentIndex,
 }) {
-
   const thumbsRef = useRef(null);
+
+  // Controle mobile (drag)
   const isDragging = useRef(false);
   const startX = useRef(0);
   const scrollLeft = useRef(0);
   const velocity = useRef(0);
   const animationFrame = useRef(null);
-  const draggingRef = useRef(false);
-  const lastScrollLeft = useRef(0);
 
-  // Inércia
-  const ease = 0.98;
+  const moved = useRef(false);
+  const dragThreshold = 5;
 
+  // Detecta mobile
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
+  // Inércia somente no mobile
   const inertiaScroll = () => {
     if (Math.abs(velocity.current) < 0.1) {
       cancelAnimationFrame(animationFrame.current);
@@ -31,50 +34,65 @@ export default function GaleriaModal({
     if (!slider) return;
 
     slider.scrollLeft += velocity.current;
-    lastScrollLeft.current = slider.scrollLeft;
-
-    velocity.current *= ease;
+    velocity.current *= 0.95; // suavidade mobile
 
     animationFrame.current = requestAnimationFrame(inertiaScroll);
   };
 
   useEffect(() => {
-    if (!thumbsRef.current) return;
-
     const slider = thumbsRef.current;
+    if (!slider) return;
 
+    // 👉 DESKTOP — rolagem horizontal suave no wheel
+    if (!isMobile) {
+      const handleWheel = (e) => {
+        e.preventDefault();
+        slider.scrollLeft += e.deltaY * 0.4; // velocidade horizontal
+      };
+
+      slider.addEventListener("wheel", handleWheel, { passive: false });
+
+      return () => {
+        slider.removeEventListener("wheel", handleWheel);
+      };
+    }
+
+    // 👉 MOBILE — drag com inércia
     const handleMouseDown = (e) => {
       isDragging.current = true;
-      draggingRef.current = false;
-      slider.classList.add("cursor-grabbing");
+      moved.current = false;
 
       startX.current = e.pageX - slider.offsetLeft;
       scrollLeft.current = slider.scrollLeft;
-      lastScrollLeft.current = slider.scrollLeft;
+      velocity.current = 0;
+
+      slider.classList.add("cursor-grabbing");
+      cancelAnimationFrame(animationFrame.current);
     };
 
     const handleMouseUp = () => {
       isDragging.current = false;
       slider.classList.remove("cursor-grabbing");
 
-      animationFrame.current = requestAnimationFrame(inertiaScroll);
+      // só ativa inércia se realmente arrastou
+      if (moved.current) {
+        animationFrame.current = requestAnimationFrame(inertiaScroll);
+      }
     };
 
     const handleMouseMove = (e) => {
       if (!isDragging.current) return;
 
-      e.preventDefault();
-
-      draggingRef.current = true;
-
       const x = e.pageX - slider.offsetLeft;
-      const walk = (x - startX.current) * 1.5;
+      const walk = x - startX.current;
 
-      const oldScrollLeft = slider.scrollLeft;
-      slider.scrollLeft = scrollLeft.current - walk;
+      if (Math.abs(walk) > dragThreshold) {
+        moved.current = true;
+      }
 
-      velocity.current = slider.scrollLeft - oldScrollLeft;
-      lastScrollLeft.current = slider.scrollLeft;
+      const prev = slider.scrollLeft;
+      slider.scrollLeft = scrollLeft.current - walk * 1.2;
+      velocity.current = slider.scrollLeft - prev;
     };
 
     slider.addEventListener("mousedown", handleMouseDown);
@@ -86,7 +104,7 @@ export default function GaleriaModal({
       document.removeEventListener("mouseup", handleMouseUp);
       document.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [open]);
+  }, [open, isMobile]);
 
   return (
     <AnimatePresence>
@@ -97,14 +115,14 @@ export default function GaleriaModal({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.4 }}
         >
           <motion.div
             className="bg-gradient-to-b from-[#000000] to-[#bfbfbf] p-4 sm:p-6 md:p-8 rounded-lg shadow-lg relative w-full max-w-xs sm:max-w-sm md:max-w-md max-h-[80vh] overflow-y-auto md:max-h-none md:overflow-visible"
             onClick={(e) => e.stopPropagation()}
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
+            exit={{ opacity: 0, scale: 0.85 }}
             transition={{ duration: 0.3 }}
           >
             <h3 className="text-[#d3c912] text-2xl font-libreBaskerville mb-4">
@@ -112,18 +130,20 @@ export default function GaleriaModal({
             </h3>
 
             {/* Imagem grande */}
-            <motion.div className="flex-1 mb-4 flex justify-center items-center">
+            <div className="flex justify-center items-center mb-4">
               <img
                 src={itens[currentIndex].image}
                 alt={itens[currentIndex].title}
                 className="max-h-[60vh] w-auto object-contain rounded-lg shadow-md"
               />
-            </motion.div>
+            </div>
 
             {/* Miniaturas */}
             <motion.div
               ref={thumbsRef}
-              className="flex items-center gap-3 overflow-x-auto py-4 scrollbar-none cursor-grab select-none"
+              className={`flex items-center gap-3 overflow-x-auto py-4 md:scrollbar-custom select-none ${
+                isMobile ? "cursor-grab" : "cursor-default"
+              }`}
             >
               {itens.map((card, i) => {
                 const isActive = i === currentIndex;
@@ -131,16 +151,10 @@ export default function GaleriaModal({
                 return (
                   <button
                     key={i}
-                    onMouseDown={() => { draggingRef.current = false; }}
-                    onMouseMove={() => { draggingRef.current = true; }}
-                    onMouseUp={() => {
-                      if (!draggingRef.current) {
-                        setCurrentIndex(i);
-                      }
-                    }}
+                    onClick={() => setCurrentIndex(i)} // clique perfeito no desktop e mobile
                     className={`flex-shrink-0 rounded-md overflow-hidden border-2 ${
                       isActive ? "border-[#d3c912] scale-105" : "border-transparent"
-                    } transition-transform cursor-grab select-none`}
+                    } transition-transform`}
                     style={{ width: 110, height: 70 }}
                   >
                     <img
@@ -153,7 +167,7 @@ export default function GaleriaModal({
               })}
             </motion.div>
 
-            {/* Botão de fechar */}
+            {/* Botão fechar */}
             <button
               className="absolute top-2 right-2 text-[#d3c912] font-bold text-xl"
               onClick={onClose}
