@@ -8,8 +8,8 @@ function Portfolio() {
     const portfolioH2 = "text-3xl md:text-4xl font-playfair text-black mb-8 text-center";
     const portfolioDiv = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-6 max-w-6xl mx-auto";
     const itens = [
-        {title: "Foto 1", image: '/imagens/IMG_0063.JPG'},
         {title: "Foto 2", image: '/imagens/IMG_0013.JPG'},
+        {title: "Foto 1", image: '/imagens/IMG_0063.JPG'},
         {title: "Foto 3", image: '/imagens/IMG_0039.JPG'},
         {title: "Foto 4", image: '/imagens/IMG_0032.JPG'},
         {title: "Foto 5", image: '/imagens/IMG_0030.JPG'},
