@@ -20,7 +20,7 @@ export default function GaleriaModal({
   const moved = useRef(false);
   const dragThreshold = 5;
 
-  // Detecta mobile
+  // Detecta mobile/desktop
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
   // Inércia somente no mobile
@@ -29,15 +29,31 @@ export default function GaleriaModal({
       cancelAnimationFrame(animationFrame.current);
       return;
     }
-
     const slider = thumbsRef.current;
     if (!slider) return;
 
     slider.scrollLeft += velocity.current;
     velocity.current *= 0.95; // suavidade mobile
-
     animationFrame.current = requestAnimationFrame(inertiaScroll);
   };
+
+  // Centraliza a miniatura clicada (desktop e mobile)
+  const scrollToThumb = (index) => {
+    if (!thumbsRef.current) return;
+    const slider = thumbsRef.current;
+    const thumb = slider.children[index];
+    if (!thumb) return;
+
+    const sliderRect = slider.getBoundingClientRect();
+    const thumbRect = thumb.getBoundingClientRect();
+    const offset = thumbRect.left - sliderRect.left - sliderRect.width / 2 + thumbRect.width / 2;
+    slider.scrollBy({ left: offset, behavior: "smooth" });
+  };
+
+  // Executa sempre que currentIndex mudar
+  useEffect(() => {
+    scrollToThumb(currentIndex);
+  }, [currentIndex]);
 
   useEffect(() => {
     const slider = thumbsRef.current;
@@ -47,25 +63,19 @@ export default function GaleriaModal({
     if (!isMobile) {
       const handleWheel = (e) => {
         e.preventDefault();
-        slider.scrollLeft += e.deltaY * 0.4; // velocidade horizontal
+        slider.scrollLeft += e.deltaY * 0.4;
       };
-
       slider.addEventListener("wheel", handleWheel, { passive: false });
-
-      return () => {
-        slider.removeEventListener("wheel", handleWheel);
-      };
+      return () => slider.removeEventListener("wheel", handleWheel);
     }
 
     // 👉 MOBILE — drag com inércia
     const handleMouseDown = (e) => {
       isDragging.current = true;
       moved.current = false;
-
       startX.current = e.pageX - slider.offsetLeft;
       scrollLeft.current = slider.scrollLeft;
       velocity.current = 0;
-
       slider.classList.add("cursor-grabbing");
       cancelAnimationFrame(animationFrame.current);
     };
@@ -73,23 +83,14 @@ export default function GaleriaModal({
     const handleMouseUp = () => {
       isDragging.current = false;
       slider.classList.remove("cursor-grabbing");
-
-      // só ativa inércia se realmente arrastou
-      if (moved.current) {
-        animationFrame.current = requestAnimationFrame(inertiaScroll);
-      }
+      if (moved.current) animationFrame.current = requestAnimationFrame(inertiaScroll);
     };
 
     const handleMouseMove = (e) => {
       if (!isDragging.current) return;
-
       const x = e.pageX - slider.offsetLeft;
       const walk = x - startX.current;
-
-      if (Math.abs(walk) > dragThreshold) {
-        moved.current = true;
-      }
-
+      if (Math.abs(walk) > dragThreshold) moved.current = true;
       const prev = slider.scrollLeft;
       slider.scrollLeft = scrollLeft.current - walk * 1.2;
       velocity.current = slider.scrollLeft - prev;
@@ -147,11 +148,10 @@ export default function GaleriaModal({
             >
               {itens.map((card, i) => {
                 const isActive = i === currentIndex;
-
                 return (
                   <button
                     key={i}
-                    onClick={() => setCurrentIndex(i)} // clique perfeito no desktop e mobile
+                    onClick={() => setCurrentIndex(i)}
                     className={`flex-shrink-0 rounded-md overflow-hidden border-2 ${
                       isActive ? "border-[#d3c912] scale-105" : "border-transparent"
                     } transition-transform`}
