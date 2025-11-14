@@ -6,14 +6,14 @@ import { useState } from "react";
 function Portfolio() {
     const portfolio = "py-16 px-4 bg-gradient-to-b from-[#ffffff] to-[#bfbfbf]";
     const portfolioH2 = "text-3xl md:text-4xl font-playfair text-black mb-8 text-center";
-    const portfolioDiv = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-6 max-w-6xl mx-auto";
+    const portfolioDiv = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 max-w-6xl mx-auto";
     const itens = [
-        {title: "Foto 1", image: '/imagens/IMG_0063.JPG'},
+        {title: "Foto 1", image: '/imagens/IMG_0063.jpg'},
         {title: "Foto 2", image: '/imagens/IMG_0013.JPG'},
-        {title: "Foto 3", image: '/imagens/IMG_0039.JPG'},
+        {title: "Foto 3", image: '/imagens/IMG_0039.jpg'},
         {title: "Foto 4", image: '/imagens/IMG_0032.JPG'},
-        {title: "Foto 5", image: '/imagens/IMG_0030.JPG'},
-        {title: "Foto 6", image: '/imagens/IMG_0044.JPG'},
+        {title: "Foto 5", image: '/imagens/IMG_0030.jpg'},
+        {title: "Foto 6", image: '/imagens/IMG_0044.jpg'},
         {title: "Foto 7", image: '/imagens/IMG_0018.JPG'},
         {title: "Foto 8", image: '/imagens/IMG_0006.JPG'},
         {title: "Foto 9", image: '/imagens/IMG_2671.JPG'},
